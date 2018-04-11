@@ -6,22 +6,23 @@
 ## How To Use?
 Step 1.Add the JitPack repository to your build file
 Add it in your root build.gradle at the end of repositories:
-
+```gradle
 	allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
+```
   
 Step 2.Add the dependency
 
 	dependencies {
-	        implementation 'com.github.sange93:DragAlbum:1.0'
+	        implementation 'com.github.sange93:DragAlbum:1.1.1'
 	}
 
 Step 3. Add the view to your xml file
-
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -41,9 +42,10 @@ Step 3. Add the view to your xml file
         android:layout_height="match_parent"/>
 
 </android.support.constraint.ConstraintLayout>
+```
 
 Step 3. Set the view in your java/kotlin file.
-
+```kotlin
 	override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -116,5 +118,6 @@ Step 3. Set the view in your java/kotlin file.
         mDataList.add(item)
         return mDataList
     }
+```
   
   OK!
