@@ -12,21 +12,29 @@ import com.sange.dragalbum.util.MyUtil
 import com.sange.dragalbum.util.imageLoader.ImageLoaderUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() ,IOnItemClickListener{
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // 初始化rootView
         dav_view.mRootView = gl_view
-        dav_view.setImages(MyUtil().moreItems(12,getImageData()),object : IAlbumImageLoader{
+        // 设置图片数据 和 加载图片实现类
+        dav_view.setImages(MyUtil().moreItems(12,getData()),object : IAlbumImageLoader{
             override fun displayImage(url: String, imageView: ImageView) {
+                // 图片加载框架（这里是二次封装的glide框架）
                 ImageLoaderUtil.with(this@MainActivity).displayImage(url, imageView)
             }
         })
-        dav_view.clickListener = this
+        // item点击事件
+        dav_view.clickListener = object : IOnItemClickListener{
+            override fun onItemClick(view: View, position: Int, isPhoto: Boolean) {
+                LogUtil.i(MainActivity::class.java, "点击了$position")
+            }
+        }
     }
 
-    private fun getImageData(): MutableList<PhotoItem> {
+    private fun getData(): MutableList<PhotoItem> {
         val mDataList = arrayListOf<PhotoItem>()
         var item = PhotoItem()
         item.imageUri = "android.resource://com.sange.dragalbum/drawable/"+R.drawable.test2// "http://www.qqpk.cn/Article/UploadFiles/201203/20120301134818217.jpg"
@@ -76,9 +84,5 @@ class MainActivity : AppCompatActivity() ,IOnItemClickListener{
         item.imageUri = "android.resource://com.sange.dragalbum/drawable/"+R.drawable.test2
         mDataList.add(item)
         return mDataList
-    }
-
-    override fun onItemClick(view: View, position: Int, isPhoto: Boolean) {
-        LogUtil.i(MainActivity::class.java, "点击了$position")
     }
 }
