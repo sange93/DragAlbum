@@ -1,9 +1,12 @@
 # DragAlbum
 一个可拖拽的图片展示控件
 目前只支持12个图片展示  第一个图片占四个小图位置
+
+[![](https://jitpack.io/v/sange93/DragAlbum.svg)](https://jitpack.io/#sange93/DragAlbum)
+
 ## Preview
 ![](https://github.com/sange93/DragAlbum/blob/master/images/album.gif)
-## How To Use?
+## Dependency
 Step 1.Add the JitPack repository to your build file
 Add it in your root build.gradle at the end of repositories:
 ```gradle
@@ -21,7 +24,8 @@ Step 2.Add the dependency
 	        implementation 'com.github.sange93:DragAlbum:1.1.1'
 	}
 
-Step 3. Add the view to your xml file
+## Usage
+Step 1. Add the view to your xml file
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -44,7 +48,7 @@ Step 3. Add the view to your xml file
 </android.support.constraint.ConstraintLayout>
 ```
 
-Step 3. Set the view in your java/kotlin file.
+Step 2. Set the view in your java/kotlin file.
 ```kotlin
 	override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,4 +124,4 @@ Step 3. Set the view in your java/kotlin file.
     }
 ```
   
-  OK!
+  That's it!
