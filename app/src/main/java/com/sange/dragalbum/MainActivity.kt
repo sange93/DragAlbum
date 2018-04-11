@@ -3,8 +3,13 @@ package com.sange.dragalbum
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
+import com.sange.album.IAlbumImageLoader
+import com.sange.album.IOnItemClickListener
+import com.sange.album.PhotoItem
 import com.sange.dragalbum.util.LogUtil
 import com.sange.dragalbum.util.MyUtil
+import com.sange.dragalbum.util.imageLoader.ImageLoaderUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() ,IOnItemClickListener{
@@ -13,34 +18,38 @@ class MainActivity : AppCompatActivity() ,IOnItemClickListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         dav_view.mRootView = gl_view
-        dav_view.setImages(MyUtil().moreItems(12,getImageData()))
+        dav_view.setImages(MyUtil().moreItems(12,getImageData()),object : IAlbumImageLoader{
+            override fun displayImage(url: String, imageView: ImageView) {
+                ImageLoaderUtil.with(this@MainActivity).displayImage(url, imageView)
+            }
+        })
         dav_view.clickListener = this
     }
 
     private fun getImageData(): MutableList<PhotoItem> {
         val mDataList = arrayListOf<PhotoItem>()
         var item = PhotoItem()
-        item.imageUri = "android.resource://com.sinofreely.calligraphy/drawable/"+R.drawable.test2// "http://www.qqpk.cn/Article/UploadFiles/201203/20120301134818217.jpg"
+        item.imageUri = "android.resource://com.sange.dragalbum/drawable/"+R.drawable.test2// "http://www.qqpk.cn/Article/UploadFiles/201203/20120301134818217.jpg"
         mDataList.add(item)
 
         item = PhotoItem()
-        item.imageUri = "android.resource://com.sinofreely.calligraphy/drawable/"+R.drawable.test2// "http://img.duoziwang.com/2016/08/09/23042617311.png"
+        item.imageUri = "android.resource://com.sange.dragalbum/drawable/"+R.drawable.test2// "http://img.duoziwang.com/2016/08/09/23042617311.png"
         mDataList.add(item)
 
         item = PhotoItem()
-        item.imageUri = "android.resource://com.sinofreely.calligraphy/drawable/"+R.drawable.test2// "http://imgsrc.baidu.com/forum/w%3D580/sign=e62489e1ccbf6c81f7372ce08c3fb1d7/2d82d5cec3fdfc03e8e38e31d43f8794a5c2261a.jpg"
+        item.imageUri = "android.resource://com.sange.dragalbum/drawable/"+R.drawable.test2// "http://imgsrc.baidu.com/forum/w%3D580/sign=e62489e1ccbf6c81f7372ce08c3fb1d7/2d82d5cec3fdfc03e8e38e31d43f8794a5c2261a.jpg"
         mDataList.add(item)
 
         item = PhotoItem()
-        item.imageUri = "android.resource://com.sinofreely.calligraphy/drawable/"+R.drawable.test2// "http://img.zcool.cn/community/01b38d554100a6000001e71bcdb382.jpg"
+        item.imageUri = "android.resource://com.sange.dragalbum/drawable/"+R.drawable.test2// "http://img.zcool.cn/community/01b38d554100a6000001e71bcdb382.jpg"
         mDataList.add(item)
 
         item = PhotoItem()
-        item.imageUri = "android.resource://com.sinofreely.calligraphy/drawable/"+R.drawable.test2// "http://www.ld12.com/upimg358/allimg/20160303/mfqwumd52fh14087.jpg"
+        item.imageUri = "android.resource://com.sange.dragalbum/drawable/"+R.drawable.test2// "http://www.ld12.com/upimg358/allimg/20160303/mfqwumd52fh14087.jpg"
         mDataList.add(item)
 
         item = PhotoItem()
-        item.imageUri = "android.resource://com.sinofreely.calligraphy/drawable/"+R.drawable.test2// "http://img.qqtouxiang8.net/uploads/allimg/c150313/142622Jc49C0-1Bb44.jpg"
+        item.imageUri = "android.resource://com.sange.dragalbum/drawable/"+R.drawable.test2// "http://img.qqtouxiang8.net/uploads/allimg/c150313/142622Jc49C0-1Bb44.jpg"
         mDataList.add(item)
 
         item = PhotoItem()
@@ -56,15 +65,15 @@ class MainActivity : AppCompatActivity() ,IOnItemClickListener{
         mDataList.add(item)
 
         item = PhotoItem()
-        item.imageUri = "android.resource://com.sinofreely.calligraphy/drawable/"+R.drawable.test2
+        item.imageUri = "android.resource://com.sange.dragalbum/drawable/"+R.drawable.test2
         mDataList.add(item)
 
         item = PhotoItem()
-        item.imageUri = "android.resource://com.sinofreely.calligraphy/drawable/"+R.drawable.test2
+        item.imageUri = "android.resource://com.sange.dragalbum/drawable/"+R.drawable.test2
         mDataList.add(item)
 
         item = PhotoItem()
-        item.imageUri = "android.resource://com.sinofreely.calligraphy/drawable/"+R.drawable.test2
+        item.imageUri = "android.resource://com.sange.dragalbum/drawable/"+R.drawable.test2
         mDataList.add(item)
         return mDataList
     }

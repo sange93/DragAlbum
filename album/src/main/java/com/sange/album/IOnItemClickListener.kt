@@ -1,4 +1,4 @@
-package com.sange.dragalbum
+package com.sange.album
 
 import android.view.View
 

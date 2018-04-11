@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.sange.dragalbum.DragAlbumView
+    <com.sange.album.DragAlbumView
         android:id="@+id/dav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

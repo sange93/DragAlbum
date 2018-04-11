@@ -1,4 +1,4 @@
-package com.sange.dragalbum
+package com.sange.album
 
 import android.animation.*
 import android.annotation.SuppressLint
@@ -18,7 +18,6 @@ import android.view.animation.OvershootInterpolator
 import android.widget.AbsListView
 import android.widget.GridLayout
 import android.widget.ImageView
-import com.sange.dragalbum.util.imageLoader.ImageLoaderUtil
 import java.util.*
 import java.util.Collections.swap
 
@@ -83,6 +82,8 @@ class DragAlbumView : ViewGroup ,View.OnTouchListener{
     private var moveY: Int = 0
 
     private var resultSet: AnimatorSet? = null
+    // 必须实现此接口 否则图片不显示
+    private var imageLoader: IAlbumImageLoader? = null
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         padding = dp2px(4)
@@ -95,7 +96,8 @@ class DragAlbumView : ViewGroup ,View.OnTouchListener{
     /**
      * 设置显示的图像集
      */
-    fun setImages(images: MutableList<PhotoItem>){
+    fun setImages(images: MutableList<PhotoItem>,loader: IAlbumImageLoader){
+        imageLoader = loader
         mImages.clear()
         mImages.addAll(images)
         initUI()
@@ -115,7 +117,8 @@ class DragAlbumView : ViewGroup ,View.OnTouchListener{
             view.setTag(R.id.id_drag_album_view_2_position,i)
             view.setOnTouchListener(this)
             if (!TextUtils.isEmpty(mImages[i].imageUri)) maxSize = i
-            ImageLoaderUtil.with(context).displayImage(mImages[i].imageUri,view)
+            imageLoader?.displayImage(mImages[i].imageUri,view)
+//            ImageLoaderUtil.with(context).displayImage(mImages[i].imageUri,view)
             addView(view)
         }
     }

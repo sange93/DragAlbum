@@ -1,6 +1,6 @@
 package com.sange.dragalbum.util;
 
-import com.sange.dragalbum.PhotoItem;
+import com.sange.album.PhotoItem;
 
 import java.util.ArrayList;
 import java.util.List;
