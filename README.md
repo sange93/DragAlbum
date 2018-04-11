@@ -17,7 +17,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2.Add the dependency
 
 	dependencies {
-	        compile 'com.github.sange93:DragAlbum:1.0'
+	        implementation 'com.github.sange93:DragAlbum:1.0'
 	}
 
 Step 3. Add the view to your xml file
