@@ -1,6 +1,6 @@
 # DragAlbum
 一个可拖拽的图片展示控件
-## How Use?
+## How To Use?
 Step 1.Add the JitPack repository to your build file
 Add it in your root build.gradle at the end of repositories:
 
