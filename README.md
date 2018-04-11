@@ -1,6 +1,8 @@
 # DragAlbum
 一个可拖拽的图片展示控件
 目前只支持12个图片展示  第一个图片占四个小图位置
+## Preview
+![](https://github.com/sange93/DragAlbum/blob/master/images/album.gif)
 ## How To Use?
 Step 1.Add the JitPack repository to your build file
 Add it in your root build.gradle at the end of repositories:
