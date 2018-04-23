@@ -95,6 +95,8 @@ class DragAlbumView : ViewGroup ,View.OnTouchListener{
 
     /**
      * 设置显示的图像集
+     * @param images 图片
+     * @param loader 图片加载框架
      */
     fun setImages(images: MutableList<PhotoItem>,loader: IAlbumImageLoader){
         imageLoader = loader
@@ -116,6 +118,7 @@ class DragAlbumView : ViewGroup ,View.OnTouchListener{
 //            view.tag = i
             view.setTag(R.id.id_drag_album_view_2_position,i)
             view.setOnTouchListener(this)
+            view.setBackgroundResource(R.drawable.bg_mi)
             if (!TextUtils.isEmpty(mImages[i].imageUri)) maxSize = i
             imageLoader?.displayImage(mImages[i].imageUri,view)
 //            ImageLoaderUtil.with(context).displayImage(mImages[i].imageUri,view)
