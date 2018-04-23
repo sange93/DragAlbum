@@ -86,7 +86,7 @@ class DragAlbumView : ViewGroup ,View.OnTouchListener{
     private var imageLoader: IAlbumImageLoader? = null
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        padding = dp2px(4)
+        padding = 0// dp2px(2) 配置间隔大小
         initUI()
     }
 
